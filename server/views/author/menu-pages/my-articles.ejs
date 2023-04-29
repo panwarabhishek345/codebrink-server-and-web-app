@@ -1,0 +1,78 @@
+<div style="display: flex;flex-direction: column;">
+
+<div>
+    <div style="display: flex;flex-direction: row;justify-content: space-between;">
+        <div style="margin: 40px 0 20px 40px;">
+            <h3 class="h3">My Articles<h3>    
+        </div>  
+    </div>
+
+    <% if(myArticles != null){%>
+   
+        <ul style="list-style-type: none;margin:0;padding:0;">
+
+                <li>
+                    <div class="card" onclick="openEditor(null);">
+                        <div class="card-body">
+                            <div id="new-doc-content">
+                                <i class="far fa-file fa-2x" style="color:#E97571;"></i>
+                                <div style="margin-top: 5px;">New</div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+            <% for(var i=0; i < myArticles.length; i++) { %>
+                <li>
+                    <div id="<%=myArticles[i]._id%>" class="card">
+                        <div class="card-body">
+                            <div style="overflow: hidden;height: 141px;font-size: 11px;line-height: 15px;">
+                                    
+                                <%if(myArticles[i].status == "published" || myArticles[i].status == "under_review"){%>
+                                    <div  onclick="showNormalToast('Published or articles under review can\'t be edited or deleted.');" style="height: 100%;opacity:0.5;">
+                                <%} else {%>
+                                    <div  onclick="openEditor(<%=JSON.stringify(myArticles[i])%>);" style="height:100%;">
+                                <%}%>
+                                        <div style="line-height: 17px;margin-bottom: 3px;font-size: 14px;font-weight: 700;"><%=myArticles[i].title%></div>
+                                        <span class="card-subtitle mb-2 text-muted"><%=myArticles[i].body%></span>
+                                    </div>
+                                    <div class="article-btn-container">
+                                        <div style="display:flex;flex-direction:row;">
+                                            <%if(myArticles[i].status == "published"){%>
+                                                <div title="Published" onclick="showNormalToast('Your article has been published');" ><i class="fa fa-globe-africa fa-lg" style="color:#34BA96;"></i></div>    
+                                            <%} else if(myArticles[i].status == "under_review") {%>
+                                                <div title="Under Review" onclick="showNormalToast('Your article is under review.');" style="margin-right:10px;"><i class="fab fa-readme fa-lg" style="color:#FFB935;"></i></div>    
+                                                <div title="Cancel Review Request" onclick="cancelReviewRequest('<%=myArticles[i]._id%>');"><i class="fas fa-backspace fa-lg" style="color:#F76C66;"></i></div>    
+                                            <%} else if(myArticles[i].status == "rejected") {%>
+                                                <div title="Rejected" onclick="showNormalToast('Your article has been rejected.');"><i class="fas fa-times-circle fa-lg" style="color:#F76C66;"></i></div>    
+                                            <%} else {%>
+                                                <div title="Draft" onclick="showNormalToast('This is a draft article.');"><i class="fa fa-file fa-lg" style="color:#969BBB;"></i></div>    
+                                            <%}%>
+                                        </div>
+                                        
+                                        <div style="display:flex;flex-direction:row;">
+                                                <div style="margin-left:10px;" title="View" onclick="viewArticle('<%=myArticles[i]._id%>');"><i class="fa fa-eye fa-lg" style="color:#8f9bbb;"></i></div>  
+                                            <%if(myArticles[i].status != "published" && myArticles[i].status != "under_review"){%>
+                                                <div style="margin-left:10px;" title="Delete" onclick="deleteArticle('<%=myArticles[i]._id%>');"><i class="fa fa-trash fa-lg" style="color:#F76C66;"></i></div>    
+                                            <%}%> 
+                                        </div>
+                                    </div>
+                            </div>      
+                        </div>
+                    </div>
+                </li>
+            <% } %>
+
+        </ul>
+    <%}%>
+
+    
+</div>
+</div>
+
+<script>
+    $(document).ready(function () {
+       localStorage.setItem("page","my-articles");
+    });
+</script>
+

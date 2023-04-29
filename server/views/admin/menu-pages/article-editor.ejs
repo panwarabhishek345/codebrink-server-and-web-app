@@ -1,0 +1,132 @@
+<div style="margin: 40px 0 20px 30px;height:inherit;">
+    <div class="form-group" style="height:inherit;">
+    <form id="articleform" class="form-horizontal" style="height:inherit;">
+
+        <div class="form-group">
+            <div class="col-sm-5">
+                <input class="form-control" type="text" name="title" id="titleInput" placeholder="Title" >
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-5">
+                <input class="form-control" type="text" name="topic" id="topicInput" placeholder="Topic" >
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-5">
+                <input class="form-control" type="text" name="subtopic" id="subtopicInput" placeholder="Subtopic">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-5">
+                <input class="form-control" type="text" name="tags" id="tagsInput" placeholder="Tags" >
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-5">
+                <input class="form-control" type="text" name="articleImage" id="articleImageInput" placeholder="Article Image">
+            </div>
+        </div>
+
+        <div class="col-sm-5">
+             <!-- Default checked -->
+            <div class="custom-control custom-radio custom-control-inline" >
+                <input type="radio" class="custom-control-input" id="webtype" name="webtype">
+                <label class="custom-control-label" for="webtype">Web</label>
+            </div>
+
+            <!-- Default unchecked -->
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" class="custom-control-input" id="codebrinktype" name="codebrinktype">
+                <label class="custom-control-label" for="codebrinktype">Codebrink</label>
+            </div>
+        </div>
+
+        <div class="form-group" style="height:inherit;">
+            <div class="icon-bar" style="display:flex;flex-direction:row;justify-content:space-between;width:auto;">
+                <div>
+                        <!-- Return false is added to disable href -->
+                    <a href="#" title="Highlight" onclick="highlightText(); return false;"><b>HL</b></a>
+                <!-- <a href="#" title="Heading 2" onclick="h2Text(); return false;"><b>H2</b></a>-->
+                    <a href="#" title="Heading 3" onclick="h3Text(); return false;"><b>H3</b></a>
+                    <a href="#" title="Heading 4" onclick="h4Text(); return false;"><b>H4</b></a>
+                    <a href="#" title="Heading 5" onclick="h5Text(); return false;"><b>H5</b></a>
+                    <a href="#" title="Bold" onclick="boldText(); return false;"><b>B</b></a>
+                    <a href="#" title="Italic" onclick="italicText(); return false;"><b>I</b></a>
+                    <a href="#" title="Underline" onclick="underlineText(); return false;"><b>U</b></a>
+                    <a href="#" title="Inline Code" onclick="codeText(); return false;"><b>In-Code</b></a>
+                    <a href="#" title="Ordered list" onclick="olText(); return false;"><b>ol</b></a>
+                    <a href="#" title="Unordered list" onclick="ulText(); return false;"><b>ul</b></a>
+                    <a href="#" title="List item" onclick="liText(); return false;"><b>li</b></a>
+                    <a href="#" title="Break" onclick="breakText(); return false;"><b>br</b></a>
+                    <a href="#" title="Horizontal rule" onclick="horizontalRuleText(); return false;"><b>hr</b></a>
+                    <a href="#" title="Table" onclick="tableText(); return false;"><b>table</b></a> 
+                    <a href="#" title="Less Than" onclick="lessThanText(); return false;"><b>&lt</b></a>
+                    <a href="#" title="Greater than" onclick="greaterThanText(); return false;"><b>&gt</b></a>
+                    <a href="#" title="Image" onclick="addImage(); return false;"><b>Image</b></a>
+                    <a href="#" title="Code Snippet" onclick="addCode(); return false;"><b>Code</b></a>
+                    <a href="#" title="Pre" onclick="addPreText(); return false;"><b>Pre</b></a>
+                    <a href="#" title="HTML" onclick="addWeb(); return false;"><b>HTML</b></a>
+                </div>
+                <div>
+                    <a href="#" title="Dark Editor" onclick="darkMode(); return false;"><i class="fas fa-moon fa-lg editor-top-ico" style="color:#fff;"></i></a>
+                    <a href="#" title="Full Screen" onclick="toggleFullScreen(); return false;"><i class="fa fa-compress-arrows-alt fa-lg editor-top-ico" style="color:#fff;"></i></a>
+                </div>
+
+            </div>
+            <div style="height:inherit;margin: 15px;">
+                <div style="height: inherit;font-size: 1rem;border-radius: 0.3rem;border: 1px solid #CED4DA;" rows="20" cols="1" name="body" form="articleform" id="bodyInput" tabindex="-1"
+                    placeholder="Article Body goes here" style="height:inherit;"></div>
+            </div>
+
+        </div>
+    </form>
+    </div>
+
+    <div style="position: fixed;top: 0;right: 0;display: flex;flex-direction: row;box-shadow: 1px 1px 4px rgba(1,1,1,.15);background: #fff;padding: 5px;z-index: 99;">
+        <div id="view-article-btn" class="editor-top-btn" title="View Article" onclick="viewArticle('from_editor');"><i class="fa fa-eye fa-lg editor-top-ico"></i></div>    
+        <div id="save-article-btn" class="editor-top-btn" title="Save Article" onclick="editArticle();"><i class="fa fa-save fa-lg editor-top-ico"></i></div>    
+        <div id="reject-article-btn" class="editor-top-btn" title="Reject Article" onclick="rejectArticle('from_editor');"><i class="fas fa-times fa-lg editor-top-ico"></i></div>    
+        <div id="publish-article-btn" class="editor-top-btn" title="Publish Article" onclick="publishArticle('from_editor');"><i class="fas fa-check fa-lg editor-top-ico"></i></div>    
+    </div>
+
+</div>
+
+
+<script>
+    $(document).ready(function () {
+       getArticle();
+       $("textarea").keydown(function(e) {
+            if(e.keyCode === 9) { // tab was pressed
+                // get caret position/selection
+                var start = this.selectionStart;
+                    end = this.selectionEnd;
+
+                var $this = $(this);
+
+                // set textarea value to: text before caret + tab + text after caret
+                $this.val($this.val().substring(0, start)
+                            + "\t"
+                            + $this.val().substring(end));
+
+                // put caret at right position again
+                this.selectionStart = this.selectionEnd = start + 1;
+
+                // prevent the focus lose
+                return false;
+            }
+        });
+
+    });
+    
+    var editor = ace.edit("bodyInput");
+    editor.setShowPrintMargin(false);
+    editor.setTheme("ace/theme/chrome");
+    editor.session.setMode("ace/mode/html");
+
+</script>
+

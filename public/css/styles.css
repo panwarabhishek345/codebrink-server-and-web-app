@@ -1,0 +1,122 @@
+@font-face {
+  font-family: "Gotham Black";
+  src: url("/src/fonts/Gotham-Black.otf") format("opentype");
+  font-style: bold; }
+
+.heading {
+  font-family: "Gotham Black";
+  font-size: 80px;
+  line-height: 75px;
+  margin-bottom: 40px; }
+
+.font-big {
+  font-size: 100px;
+  line-height: 80px; }
+
+#titleContainer {
+  animation-name: showHeading;
+  animation-duration: 1s; }
+
+@keyframes showHeading {
+  0% {
+    opacity: 0;
+    transform: translateY(50px); }
+  100% {
+    opacity: 1;
+    transform: translateY(0px); } }
+
+.mynavbar {
+  background: none; }
+
+body {
+  background: #fafafa;
+  color: #2D3334; }
+
+.header-inner {
+  background: url("./../imgs/profile2.png") no-repeat center;
+  background-size: cover;
+  min-height: 100vh;
+  width: 100%;
+  color: #2D3334;
+  display: flex;
+  margin-top: -20px;
+  flex-direction: column-reverse;
+  align-items: flex-start;
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); }
+
+.social-icons {
+  font-size: 25px;
+  border-radius: 50%;
+  border: solid #2D3334 1px;
+  line-height: 42px;
+  color: #2D3334;
+  width: 2em;
+  height: 2em;
+  text-align: center;
+  display: inline-block;
+  transition: 0.25s; }
+
+.fa {
+  vertical-align: middle; }
+
+.social-icons:hover {
+  color: #fff;
+  background-color: #2D3334; }
+
+.btn-outline-light:hover {
+  color: #2D3334; }
+
+.wedge {
+  width: 100%;
+  padding-left: 10%;
+  padding-right: 10%; }
+
+.btn-round:link,
+.btn-round:visited,
+.btn-round {
+  font-weight: bold;
+  color: #2D3334;
+  background: #fafafa;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 12px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 25px;
+  transition: all 0.2s;
+  opacity: 0.9;
+  display: inline-block;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2); }
+
+.btn-round:hover {
+  transform: translateY(-3px);
+  box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.2); }
+
+.btn-round:active {
+  transform: translateY(-2px);
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2); }
+
+.nav-item {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bold; }
+
+.text-non-selectable {
+  -webkit-user-select: none;
+  /* Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* IE10+/Edge */
+  user-select: none; }
+
+.project-images {
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  width: 40%;
+  margin: 10px;
+  transition: all 0.2s; }
+
+.project-images:hover {
+  transform: translateY(-3px);
+  box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.2); }

@@ -1,0 +1,291 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:500,700');
+
+
+* {
+  margin: 0;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body{
+  background-color: rgb(220, 220, 220);
+  opacity:1;
+  transition:1.8s opacity;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+body.fade-out{
+  opacity: 0;
+  transition: none;
+}
+
+
+
+@media (min-width: 481px) {
+  body{
+    background-color: rgb(220, 220, 220);
+    opacity:1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition:1.8s opacity;
+  }
+  ::-webkit-scrollbar-track
+  {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+  }
+
+  ::-webkit-scrollbar
+  {
+    height: 8px;
+    width: 8px;
+    background-color: rgb(255, 255, 255);
+  }
+
+  ::-webkit-scrollbar-thumb
+  {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: rgb(221, 221, 221);
+  }  
+}
+
+.noselect {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+@font-face {
+  font-family: raleway_extrabold;
+  src: url(raleway_extrabold.ttf);
+}
+
+.card1 {
+ 
+  border-radius: 8px;
+  margin: 0.8rem;
+  height: auto;
+  overflow: auto;
+  padding: 20px;
+  max-width: 700px;
+  width: -webkit-fill-available;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4);
+  background-color: #F5F5F5;
+}
+
+.article-title-read {
+  float: left;
+  width: 90%;
+  text-transform: uppercase;
+  font-family: raleway_extrabold;
+  font-weight: bolder;
+  font-size: x-large;
+  background-color: #F5F5F5;
+  color: #000000;
+}
+
+.title-container{
+  padding-bottom: 10px;
+  background-color: #F5F5F5;
+}
+
+.article-desc-read {
+  color: #000000;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-size: 1em;
+  line-height: 30px;
+  font-weight: 500;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #F5F5F5;
+}
+
+.col{
+  display: flex;
+  flex-direction: column;
+}
+
+.code-container{
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(220, 220, 220);
+  background-color: #FFFFFF;
+  overflow: auto;
+  padding: 0px;
+  margin: 0px;
+  color:#000000;
+
+}
+
+.media-object-container{
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(220, 220, 220);
+  background-color: #FFFFFF;
+  overflow: auto;
+  margin-bottom: 10px;
+  margin-top: -10px;
+  color: #000000;
+}
+
+.language-java{
+  font-size: 14px;
+}
+
+pre > code {
+
+  white-space: pre;
+  display: block;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.profile{
+  max-width:100%;
+  max-height:100%;
+  border-radius: 50%;
+}
+
+.img-media{
+  max-width:100%;
+  max-height:100%;
+}
+
+.author-info-col{
+  width: auto;
+  height: 40px;
+  margin-right: 4%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.author-info-row{
+  display: flex;
+  align-items: flex-start;
+}
+
+.author-name{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  color: #000000;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.article-date-text{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  color: #141414;
+
+}
+
+.article-views-text{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  display: flex;
+  flex-direction: row;
+  flex: 1 0 auto;
+  color: #141414;
+
+}
+
+.author-date-container{
+  margin-right: 6%;
+  max-width: 140px;
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+}
+
+.author-info-container{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.verified-tick{
+  height: 14px;
+  margin-left: 5px;
+  vertical-align: middle;
+}
+
+.name-tick-container{
+  display: flex;
+  flex: 1 0 auto;
+  align-items: center;
+}
+
+.article-body-container{
+  padding-bottom: 10px;
+  background-color: #F5F5F5;
+}
+
+.highlighted-text{
+    background-color: #aad9f2;
+}
+
+ul{
+  color: #000000;
+  font-size: 1em;
+  line-height: 30px;
+  font-weight: 500;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #F5F5F5;
+}
+
+li{
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+.inline-code {
+  border: 1px solid #AFB2B5;
+  background-color: rgb(230, 230, 230);
+  padding: 0 5px 0 5px;
+  border-radius: 3px;
+  white-space: pre-wrap;
+  font-size: large;
+}
+
+hr{
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+#table-normal {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+}
+
+#table-normal  td, #table-normal  th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  white-space: pre-wrap;
+  color: #000000;
+}
+
+#table-normal  tr:nth-child(even){background-color: #f2f2f2;}
+
+#table-normal  th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4597c4;
+  color: white;
+}
+

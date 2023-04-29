@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="/web/dashboard/dashboard.css">
+    <link rel="stylesheet" href="/lib/toasts/jquery.toast.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-auth.js"></script>
+
+    <script src="lib/toasts/jquery.toast.min.js"></script>
+    <script src="web/dashboard/js/models.js"></script>
+    <script src="web/dashboard/js/create-article.js"></script>
+    <script src="web/dashboard/js/edit-article.js"></script>
+    <script src="web/dashboard/js/delete-article.js"></script>
+    <script src="web/dashboard/js/keyboard-shortcuts.js"></script>
+    <script src="web/dashboard/js/body-text-manipulation.js"></script>
+    <script src="web/dashboard/js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.3/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.9/js/mdb.min.js"></script>
+</head>
+
+<body id="body" class="wrapper">
+
+    <!-- Sidebar -->
+    <nav id="sidebar" style="position:fixed;">
+        <div class="sidebar-header">
+          <p id="sidebar-head-text">CODEBRINK</p>
+        </div>
+
+        <ul class="list-unstyled" id="menu-item-ul">
+            <li>
+                <div class="sidebar-list-item-container active">
+                <i class="fas fa-file-invoice fa-lg sidebar-li-ico"></i> 
+                <a onclick="getMyArticles();">My Articles</a>   
+                </div>
+            </li>
+          <%#   <li>
+                <div class="sidebar-list-item-container">
+                    <i class="fas fa-question-circle fa-lg sidebar-li-ico"></i>
+                    <a href="/author/tutorial">Tutorial</a>
+                </div>
+            </li> %>
+            <li onclick="logout();" class="sidebar-list-item-container">
+                <div class="sidebar-list-item-container">
+                    <i class="fas fa-sign-out-alt fa-lg sidebar-li-ico"></i>
+                    <a href="#">Logout</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+     <!-- Page Content -->
+     <div id="content" style="width:inherit;margin-left:250px;height:100vh">
+
+        <div id="page-container" style="height:inherit;">
+            
+        <% if(page === "my-articles"){ %>
+            <%- include('menu-pages/my-articles',myArticles); %>
+        <%} else {%>
+            <%- include('menu-pages/article-editor'); %>
+        <%}%>
+        </div>
+
+        <div id="progressbar" class="loader"></div>
+
+    </div>
+
+</body>
+
+</html>

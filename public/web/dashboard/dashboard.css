@@ -1,0 +1,300 @@
+@font-face {
+  font-family: raleway_extrabold;
+  src: url(/raleway_extrabold.ttf);
+}
+
+
+textarea{
+    resize: both;
+    overflow: auto;
+}
+
+
+/* The snackbar - position it at the bottom and in the middle of the screen */
+#snackbar {
+    visibility: hidden; /* Hidden by default. Visible on click */
+    min-width: 250px; /* Set a default minimum width */
+    margin-left: -125px; /* Divide value of min-width by 2 */
+    background-color: #333; /* Black background color */
+    color: #fff; /* White text color */
+    text-align: center; /* Centered text */
+    border-radius: 2px; /* Rounded borders */
+    padding: 16px; /* Padding */
+    position: fixed; /* Sit on top of the screen */
+    z-index: 1; /* Add a z-index if needed */
+    left: 50%; /* Center the snackbar */
+    bottom: 30px; /* 30px from the bottom */  
+  }
+
+  
+  
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#snackbar.show {
+    visibility: visible; /* Show the snackbar */
+    /* Add animation: Take 0.5 seconds to fade in and out the snackbar. 
+    However, delay the fade out process for 2.5 seconds */
+    -webkit-animation: fadein 0.2s, fadeout 0.5s 2.5s;
+    animation: fadein 0.2s, fadeout 0.5s 2.5s;
+  }
+  
+  /* Animations to fade the snackbar in and out */
+  @-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 30px; opacity: 1;}
+  }
+  
+  @keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+  }
+  
+  @-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;} 
+    to {bottom: 0; opacity: 0;}
+  }
+  
+  @keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+  }
+
+  
+.icon-bar {
+      width: fit-content;
+    background-color: #555;
+    overflow: auto;
+    margin: 1%;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 15px;
+    border-radius: 60px;
+    color: white;
+
+}
+
+.icon-bar a {
+  float: left;
+  width: auto;
+  text-align: center;
+  padding: 8px;
+  transition: all 0.3s ease;
+  color: white;
+  font-size: 16px;
+}
+
+.icon-bar a:hover {
+  background-color: #000;
+}
+
+.wrapper {
+  display: flex;
+  width: 100%;
+  align-items: stretch;
+}
+
+#sidebar {
+  min-width: 250px;
+  max-width: 250px;
+  min-height: 100vh;
+}
+
+body {
+  background: #fafafa;
+}
+
+p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1em;
+  font-weight: 300;
+  line-height: 1.7em;
+  color: #999;
+  margin: 0;
+}
+
+a, a:hover, a:focus {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+#sidebar {
+  background: #323439;
+  transition: all 0.3s;
+}
+
+#sidebar .sidebar-header {
+  padding: 50px 20px 10px 50px;
+  color: #646770;
+  display: inline-block;
+  width: 100%;
+  position: relative;
+  font-family: raleway_extrabold;
+}
+
+#sidebar ul p {
+  color: #fff;
+  padding: 10px;
+}
+
+#sidebar ul li a {
+  padding: 10px;
+  font-size: 1em;
+  display: block;
+}
+
+
+ul ul a {
+  font-size: 0.9em !important;
+  padding-left: 30px !important;
+}
+
+.article-list-item{
+  padding: 20px;
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  background: #fff;
+  -webkit-box-shadow: 0 5px 6px -6px #777;
+  -moz-box-shadow: 0 5px 6px -6px #777;
+  box-shadow: 0 5px 6px -6px #777;
+}
+
+#menu-item-ul{
+    padding: 0 0 0 50px;
+    background: #323439;
+    height: 100vh;
+    position: relative;
+}
+
+#sidebar ul li {
+  width: 100%;
+  height: 45px;
+  line-height: 45px;
+  display: inline-block;
+  position: relative;
+  font-size: 17px;
+  margin-top: auto;
+}
+.active {
+  color: rgb(212, 212, 212) !important;
+}
+.sidebar-list-item-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: baseline;
+  color: #999999;
+}
+
+
+.sidebar-list-item-container:hover{
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: baseline;
+  color: #fff;
+}
+.sidebar-li-ico{
+  opacity: 0.6;
+  margin: -5px 10px 0 0;
+}
+
+#sidebar-head-text{
+  font-family: raleway_extrabold;
+  font-size: 1.4em;
+}
+
+.card{
+  position: relative;
+  float: left;
+  width: 140px;
+  height: 172px;
+  box-shadow: 1px 1px 4px rgba(1,1,1,.15);
+  margin: 0 0 60px 40px;
+}
+
+
+.card-body{
+  position: relative;
+  background: #fff;
+  display: inline-block;
+  padding: 12px 15px 0;
+  width: inherit;
+  height: inherit;
+  color: #373737;
+  text-decoration: none;
+  cursor: pointer;
+  transition: box-shadow .2s;
+}
+.card-body:hover {
+  box-shadow: 0 0 11px rgba(33,33,33,.2); 
+}
+
+
+#new-doc-content{
+  background: transparent no-repeat 50% 23px;
+  text-align: center;
+  color: #373737;
+  font-size: 22px;
+  font-weight: 500;
+  width: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.article-btn-container{
+  position: absolute;
+  bottom: 0;
+  padding: 6px 14px;
+  left: 0;
+  background: #fff;
+  height: 47px;
+  width: 100%;
+  border-top: 1px solid #e8e8e8;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.editor-top-btn{
+  padding: 10px;
+}
+
+.editor-top-ico{
+  color: #323439;
+  font-size:1.4em;
+}
+.editor-top-ico:hover{
+  color: #939496;
+}
+
+
+.loader {
+  display: none;
+  border: 5px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 5px solid #3498db;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  -webkit-animation: spin 1s linear infinite; /* Safari */
+  animation: spin 1s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

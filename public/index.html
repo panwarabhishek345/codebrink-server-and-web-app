@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="shortcut icon" type="image/png" href="/logo.png" />
+  <link rel="stylesheet" href="./css/bootstrap.css">
+  <link rel="stylesheet" href="./css/font-awesome.min.css">
+  <link rel="stylesheet" href="./css/styles.css">
+  <link rel="stylesheet" href="/web/author/auth.css">
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-auth.js"></script>
+  <script src="/auth.js"></script>
+  <title>Codebrink</title>
+</head>
+
+<body>
+
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="/logo_small.png" style="width:50px;height:50px;" alt="">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link btn-navbar" href="#" onclick="login('author');">Author</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" onclick="login('admin');">Admin</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li> -->
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="home-container" style="background-color: #2A3137;"
+    class="d-flex pt-5 pl-5 pr-5 flex-column align-items-center justify-content-center mt-5">
+    <h1 class="masthead-title main-tcolor"><b>Welcome to Codebrink</b></h1>
+    <h4 class="text-muted m-2">An educational platform for techies.</h4>
+    <a class="btn btn-hero m-4" id="tour-btn">Take a tour</a>
+    <img class="mt-5" src="/mast_image.svg">
+  </div>
+  <section id="mission-section" style="background-color:#fff;">
+    <div class="container">
+      <h2 class="masthead-title main-tcolor-dark"><b>Our Mission!</b></h2>
+      <h5 class="text-muted m-3">Lack of technical knowledge should not be a hindrance to anyone's dreams.</h5>
+    </div>
+  </section>
+
+  <div class="lds-ellipsis" id="progress-spinner" style="display:none;">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+</body>
+
+<script>
+
+</script>
+
+
+</html>

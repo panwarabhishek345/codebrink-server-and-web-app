@@ -1,0 +1,5 @@
+E001, User not Found
+E002, Not Authorised to use the Api (either token or the api_access_key_user is not present)
+E003, Error Saving the Google User After bookmarking
+E004, Token is incorrect
+E005, Error Finding Articles 

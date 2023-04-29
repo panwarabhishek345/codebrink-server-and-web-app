@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>
+    <%= ArticleObject.title %>
+  </title>
+  <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+
+  <% if(nightMode == "true") { %>
+  <meta name="theme-color" content="#232323">
+  <link type="text/css" rel="stylesheet" href="./styles-night.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/monokai.min.css">
+  <% } if(nightMode == "false") { %>
+  <meta name="theme-color" content="#f5f5f5">
+  <link type="text/css" rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/xcode.min.css">
+  <% } %>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+
+</head>
+
+<body class="noselect">
+  <script>document.body.className += ' fade-out';</script>
+  <div class="card1">
+    <div class="col">
+      <div class="title-container">
+        <p id="title" class="article-title-read noselect">
+          <%= ArticleObject.title %>
+        </p>
+      </div>
+
+      <div class="author-info-row">
+        <div class="author-info-col">
+          <img class="profile lazy" src="profile_placeholder.png" data-original="<%= ArticleObject.author.imageURL %>"
+            alt="icon">
+        </div>
+
+        <div class="author-info-col">
+          <div class="author-info-container">
+            <div class="author-date-container">
+              <div class="name-tick-container">
+                <p class="author-name">
+                  <%= ArticleObject.author.name %>
+                </p>
+                <img class="verified-tick" src="verified_tick.png">
+              </div>
+
+              <p class="article-date-text">
+                <%= date %>
+              </p>
+            </div>
+
+            <div class="article-views-text">
+              <%= ArticleObject.views %> views
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="article-body-container">
+
+        <% var bodysplits = ArticleObject.body.split(/%%/g).filter(function (el) { %>
+        <%  return el.length != 0; %>
+        <% }); %>
+
+        <% bodysplits.forEach(function (bodysplit,i){ %>
+        <div id="desc " class="article-desc-read noselect">
+          <%- bodysplit %>
+
+        </div>
+
+        <% if (ArticleObject.mediaObjects.length > i) { %>
+
+        <% if (ArticleObject.mediaObjects[i].objectType == 0) { %>
+
+        <% if (ArticleObject.mediaObjects[i].isFullScreenEnabled) { %>
+        <div class="code-container " style="height:250px;max-height:none;resize:vertical;">
+          <% } else{%>
+          <div class="code-container " style="max-height:250px;resize:vertical;">
+            <% } %>
+            <pre><code class="noselect <%= ArticleObject.mediaObjects[i].content %>" style="padding: 12px !important;"><%= ArticleObject.mediaObjects[i].codeCpp %> </code></pre>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/<%= ArticleObject.mediaObjects[i].content %>.min.js"></script>
+
+          </div>
+
+
+          <% } %>
+
+          <%  if (ArticleObject.mediaObjects[i].objectType == 1) { %>
+
+          <img class="img-media lazy" data-original="<%= ArticleObject.mediaObjects[i].content %>" alt="icon" onclick="imageClicked('<%= ArticleObject.mediaObjects[i].content %>');">
+
+          <% } %>
+
+          <% if (ArticleObject.mediaObjects[i].objectType == 2) { %>
+              <% if (ArticleObject.mediaObjects[i].isFullScreenEnabled) { %>
+                <div class="code-container " style="height:250px;max-height:none;resize:vertical;">
+              <% } else{%>
+                <div class="code-container " style="max-height:250px;resize:vertical;">
+                  <% } %>
+                    <pre  style="padding:12px;"><%= ArticleObject.mediaObjects[i].content %></pre>
+                </div>
+          <% } %>
+
+          <%  if (ArticleObject.mediaObjects[i].objectType == 3) { %>
+
+          <% if (ArticleObject.mediaObjects[i].isFullScreenEnabled) { %>
+          <div class="media-object-container noselect" style="height:250px;max-height:none;resize:vertical;">
+            <% } else{%>
+            <div class="media-object-container noselect" style="max-height:250px;resize:vertical;">
+              <% } %>
+              <pre><%-ArticleObject.mediaObjects[i].content %></pre>
+            </div>
+
+            <% } }%>
+
+            <% }); %>
+
+
+          </div>
+
+        </div>
+      </div>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+
+  $(function () {
+    $("img.lazy").lazyload({
+      effect: "fadeIn"
+    });
+  });
+
+  $(function () {
+    $('body').removeClass('fade-out');
+  });
+
+  function imageClicked(imageURL) {
+    if (typeof Android !== "undefined" && Android !== null) {
+      Android.openImageAndroid(imageURL);
+    } else {
+      console.log("Not viewing in webview")
+    }
+  }
+</script>
+
+
+</html>
